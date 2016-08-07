@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2</title>
+    <script src="https://npmcdn.com/vue@latest/dist/vue.min.js"></script>
+    <style>
+        .ok {
+            color: green;
+        }
+
+        .bad {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <label for="text" :class="text ? 'ok' : 'bad'">Текстовое поле</label>
+            <input type="text" id="text" v-model="text" name="text" placeholder="Введите текст" required>
+            <br>
+            <label for="tel" :class="validTel ? 'ok' : 'bad'">Номер телефона</label>
+            <input type="tel" id="tel" v-model="tel" name="tel" placeholder="Введите номер телефона" required>
+            <br>
+            <label for="email" :class="validEmail ? 'ok' : 'bad'">Email</label>
+            <input type="email" id="email" v-model="email" name="email" placeholder="Введите email" required>
+            <br>
+            <input type="submit" v-if="validAll" value="Отправить">
+        </form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            computed: {
+                validTel: function() {
+                    var re = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
+                    return re.test(this.tel);
+                },
+                validEmail: function() {
+                    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+                    return re.test(this.email);
+                },
+                validAll: function() {
+                    return this.text && this.validTel && this.validEmail;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

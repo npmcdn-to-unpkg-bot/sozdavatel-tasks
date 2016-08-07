@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1</title>
+    <script src="https://npmcdn.com/vue@latest/dist/vue.min.js"></script>
+    <script src="https://npmcdn.com/vue-resource@0.9.3/dist/vue-resource.min.js"></script>
+    <style>
+        .flex-container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .flex-element {
+            border: solid 1px black;
+            margin: 1px;
+            -ms-flex-preferred-size: 32%;
+            flex-basis: 32%;
+        }
+
+        @media all and (max-width: 1024px) {
+            .flex-element {
+                -ms-flex-preferred-size: 49%;
+                flex-basis: 49%;
+            }
+        }
+
+        @media all and (max-width: 768px) {
+            .flex-element {
+                -ms-flex-preferred-size: 100%;
+                flex-basis: 100%;
+            }
+        }
+
+        .list {
+            -ms-flex-preferred-size: 100%;
+            flex-basis: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="listView = !listView">{{ viewButton }}</button>
+        <div class="flex-container">
+            <div class="flex-element" v-for="person in people" :class="{list : listView}">
+                <img src="{{ person.picture.thumbnail }}" alt="avatar" /> {{ person.name.first }} {{ person.name.last }}
+            </div>
+            <button @click="fetchAPI(1)">Загрузить</button>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                listView: false,
+                people: []
+            },
+            created: function() {
+                this.fetchAPI(7);
+            },
+            methods: {
+                fetchAPI: function(num) {
+                    var urlAPI = "http://api.randomuser.me/?results=" + num;
+                    this.$http.get(urlAPI)
+                        .then(
+                            // успех
+                            function(res) {
+                                console.log(res);
+                                for (var i = 0; i < num; i++) {
+                                    this.people.push(res.data.results[i]);
+                                }
+                            },
+                            //ошибка
+                            function(res) {
+                                console.log(res);
+                            });
+                }
+            },
+            computed: {
+                viewButton: function() {
+                    if (this.listView) {
+                        return 'Список';
+                    }
+                    return 'Плитка';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

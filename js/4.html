@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4</title>
+    <script src="https://npmcdn.com/vue@latest/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <textarea @keyup="add" v-model="text" placeholder="Введите текст"></textarea>
+        <button v-if="text" @click="undo">Отменить</button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                buff: ['']
+            },
+            methods: {
+                add: function() {
+                    this.buff.push(this.text);
+                },
+                undo: function() {
+                    //Удаление одновременных нажатий
+                    while (this.buff[this.buff.length - 1] === this.buff[this.buff.length - 2]) {
+                        this.buff.pop();
+                    }
+                    this.buff.pop();
+                    this.text = this.buff[this.buff.length - 1];
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

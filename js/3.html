@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3</title>
+</head>
+
+<body>
+    <ul>
+        <li>list 1
+            <ul>
+                <li>list 1.1
+                    <ul>
+                        <li>list 1.1.1</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>list 2
+            <ul>
+                <li>list 2.1</li>
+            </ul>
+        </li>
+        <li>list 3</li>
+        <li>list 4
+            <ul>
+                <li>list 4.1</li>
+                <li>list 4.2</li>
+                <li>list 4.3
+                    <ul>
+                        <li>list 4.3.1</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.slim.min.js" integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('li').find('ul').parent()
+                .prepend('<span>[+]</span> ')
+                .click(function() {
+                    console.log(this);
+                });
+        });
+    </script>
+</body>
+
+</html>
