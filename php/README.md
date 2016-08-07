@@ -15,6 +15,7 @@
 Напишите функцию, которая вычисляет доход по вкладу. В качестве аргумента принимается сумма вклада, срок в месяцах, годовой процент. Возвращается сумма вклада по окончанию срока.
 
 ### [РЕШЕНИЕ](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/1.php)
+[↑К задачам](#Эпизоды)
 
 ## Дата
 
@@ -23,6 +24,7 @@
 Напишите функцию, которая принимает на вход два аргумента – число (1..31) и номер месяца (1..12). Возвращает правильно сформированную дату на русском языке. Например: «1 января» или «9 мая».
 
 ### [РЕШЕНИЕ](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/2.php)
+[↑К задачам](#Эпизоды)
 
 ## Калькулятор
 
@@ -35,6 +37,8 @@
 - [html](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/3.html)
 - [php](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/3.php)
 
+[↑К задачам](#Эпизоды)
+
 ## Галерея
 
 ### Задание
@@ -46,6 +50,8 @@
 - [html](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/4.html)
 - [php](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/upload.php)
 
+[↑К задачам](#Эпизоды)
+
 ## Градусы
 
 ### Задание
@@ -53,3 +59,5 @@
 Напишите функцию, которая принимает на вход два аргумента первое число - часы, второе - минуты. Необходимо вычислить угол между стрелками. Пример На часах 3 часа 15 минут, сколько градусов между стрелками? 
 
 ### [РЕШЕНИЕ](https://github.com/yeltsov/sozdavatel-tasks/blob/master/php/5.php)
+
+[↑К задачам](#Эпизоды)
